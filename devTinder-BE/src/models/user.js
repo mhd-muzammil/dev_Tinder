@@ -46,20 +46,20 @@ const userSchema = new mongoose.Schema(
         values: ["male", "female", "others"],
         message: `{VALUE} IS NOT A GENDER TYPE`,
       },
-      // validate(value) {
-      //   if (!["male", "female", "others"].includes(value)) {
-      //     throw new Error("Eneter Valid Gender:" + value);
-      //   }
-      // },
+      validate(value) {
+        if (!["male", "female", "others"].includes(value)) {
+          throw new Error("Eneter Valid Gender:" + value);
+        }
+      },
     },
     photoUrl: {
       type: String,
-      default: "https://example.com/default.png",
-      validate(value) {
-        if (!validator.isURL(value)) {
-          throw new Error("Enter valid URL:" + value);
-        }
-      },
+      // default: "https://example.com/default.png",
+      // validate(value) {
+      //   if (!validator.isURL(value)) {
+      //     throw new Error("Enter valid URL:" + value);
+      //   }
+      // },
     },
     about: {
       type: String,
