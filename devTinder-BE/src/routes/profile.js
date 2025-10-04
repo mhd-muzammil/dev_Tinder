@@ -24,10 +24,10 @@ profileRouter.patch("/profile/edit", userAuth, async (req, res) => {
       throw new Error("Invalid Edit Request");
     }
     const loggedInUser = req.user;
-    console.log(loggedInUser);
+    // console.log(loggedInUser);
 
     Object.keys(req.body).forEach((key) => (loggedInUser[key] = req.body[key]));
-    console.log(loggedInUser);
+    // console.log(loggedInUser);
 
     await loggedInUser.save();
 
@@ -52,7 +52,7 @@ profileRouter.patch("/profile/updatePassword", userAuth, async (req, res) => {
     }
     const loggedInUser = req.user;
       const passHash = loggedInUser.password;
-      console.log(passHash);
+      // console.log(passHash);
     const isMatch = await bcrypt.compare(oldPassword, passHash);
     if (!isMatch) {
       res.status(404).send("Old Password is Incorrect");
